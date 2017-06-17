@@ -549,6 +549,7 @@ NSString*             freeStreamerReleaseVersion();
  * This property holds the current statistics for the stream state.
  */
 @property (nonatomic,readonly) FSStreamStatistics *statistics;
+- (void)updateCacheDirectory:(NSString *)cacheDirectory;
 /**
  * Called upon completion of the stream. Note that for continuous
  * streams this is never called.

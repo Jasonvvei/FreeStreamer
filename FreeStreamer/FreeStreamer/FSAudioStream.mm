@@ -1515,6 +1515,12 @@ public:
     return _private.levels;
 }
 
+- (void)updateCacheDirectory:(NSString *)cacheDirectory {
+    NSAssert([NSThread isMainThread], @"FSAudioStream.initWithConfiguration needs to be called in the main thread");
+    astreamer::Stream_Configuration *c = astreamer::Stream_Configuration::configuration();
+    c->cacheDirectory = CFStringCreateCopy(kCFAllocatorDefault, (__bridge CFStringRef)cacheDirectory);
+}
+
 - (FSStreamPosition)currentTimePlayed
 {
     NSAssert([NSThread isMainThread], @"FSAudioStream.currentTimePlayed needs to be called in the main thread");
